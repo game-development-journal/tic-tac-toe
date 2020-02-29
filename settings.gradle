@@ -1,0 +1,3 @@
+rootProject.name = 'tic-tac-toe'
+include 'io.crocker.gdj.tictactoe.game'
+
