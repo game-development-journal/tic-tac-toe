@@ -36,9 +36,6 @@ public class TicTacToe
         // TODO validate move
 
         this.state = move;
-
-        // TODO validate win
-
         this.currentPlayer = (this.currentPlayer + 1) % 2;
     }
 
@@ -60,5 +57,19 @@ public class TicTacToe
 
             System.out.println(DIVIDER);
         }
+    }
+
+    public boolean isComplete()
+    {
+        // TODO check for win condition
+
+        for (SquareState square : this.state)
+        {
+            if (square.equals(SquareState.EMPTY)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

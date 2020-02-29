@@ -6,21 +6,29 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class HumanPlayer implements IPlayer
+public class HumanPlayer extends BasePlayer
 {
     @Override
     public SquareState[] move(SquareState[] state, SquareState piece)
     {
-        System.out.println("Please enter index to fill [1-9]: ");
         int index = -1;
         try
         {
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(System.in));
-            String strIndex = reader.readLine();
-            index = Integer.parseInt(strIndex);
+            boolean invalid = true;
 
-            // TODO validate range
+            do
+            {
+                System.out.println("Please enter index to fill [1-9]: ");
+
+                // Read Input
+                BufferedReader reader =
+                        new BufferedReader(new InputStreamReader(System.in));
+                String strIndex = reader.readLine();
+                index = this.validateInput(strIndex, state);
+
+                // Validate Range
+                invalid = index == -1;
+            } while (invalid);
         } catch (IOException e)
         {
             e.printStackTrace();
